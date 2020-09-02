@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Vectorial</string>
+    <string name="selectcolor">Select color</string>
+    <string name="my_studio">My Studio</string>
+    <string name="image_view">View</string>
+
+    <string name="native_ad_unit_Id">707469869975798_707470779975707</string>
+    <string name="banner_ad_unit_id">707469869975798_707471496642302</string>
+    <string name="interstitial_ad_unit_id">707469869975798_707471259975659</string>
+
+
+</resources>
