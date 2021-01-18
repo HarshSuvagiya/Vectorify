@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name="com.scorpion.vectorial.activity.ImageViewActivity"
             android:parentActivityName="com.scorpion.vectorial.activity.StudioActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.scorpion.vectorial.activity.StudioActivity"
             android:parentActivityName="com.scorpion.vectorial.activity.StartActivity"

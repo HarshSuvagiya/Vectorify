@@ -17,6 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/main_bg_lottie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="bg2.json"
+            app:lottie_loop="true" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,7 +41,7 @@
             <ImageView
                 android:id="@+id/foreground"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -42,9 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/gilroy_medium"
+            android:gravity="center"
             android:text="Preview"
             android:textColor="@color/btncolor"
-            android:gravity="center"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -73,11 +88,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:layout_above="@+id/banner_container"
-        android:id="@+id/constr"
+        android:layout_margin="5dp"
         android:background="@drawable/border_button_shape">
 
         <TextView
@@ -87,9 +102,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/gilroy_medium"
+            android:gravity="center"
             android:text="Size and position"
             android:textColor="@color/white"
-            android:gravity="center"
             android:textSize="15dp"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -102,9 +117,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:progressDrawable="@drawable/seekbarr"
-            android:minHeight="2dp"
             android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:progressDrawable="@drawable/seekbarr"
             android:thumbTint="@color/btncolor"
             app:layout_constraintBottom_toTopOf="@id/left"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -117,8 +132,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:gravity="center"
             android:fontFamily="@font/gilroy_medium"
+            android:gravity="center"
             android:text="Rotation"
             android:textColor="@color/white"
             android:textSize="15dp"
@@ -133,14 +148,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:max="360"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
             android:progressDrawable="@drawable/seekbarr"
             android:thumbTint="@color/btncolor"
-            android:minHeight="2dp"
-            android:maxHeight="2dp"
-            android:max="360"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/sizeSeekbar"
             app:layout_constraintBottom_toTopOf="@id/left"
+            app:layout_constraintLeft_toRightOf="@id/sizeSeekbar"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sizeAndPosition" />
 
         <ImageView
@@ -216,16 +231,17 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/banner_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
-        android:padding="3dp"
         android:orientation="vertical"
-      android:layout_alignParentBottom="true"
+        android:padding="3dp"
         android:visibility="visible"></LinearLayout>
 
 </RelativeLayout>

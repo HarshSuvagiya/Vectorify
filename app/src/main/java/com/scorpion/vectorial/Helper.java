@@ -8,6 +8,11 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class Helper {
 
     public static boolean isAudioEnable = false;
@@ -25,4 +30,11 @@ public class Helper {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                 }, requestCode);
     }
+
+    public static String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy-HH-mm-ss", Locale.getDefault());
+        Date today = Calendar.getInstance().getTime();
+        return dateFormat.format(today).replace(" ", "");
+    }
+
 }

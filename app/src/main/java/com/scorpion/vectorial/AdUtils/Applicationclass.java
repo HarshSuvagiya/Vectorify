@@ -15,7 +15,7 @@ public class Applicationclass extends Application {
 		super.onCreate();
 		instance = this;
 		AudienceNetworkAds.initialize(this);
-		AdSettings.addTestDevice("5c661a62-7d10-4f8c-8c2b-4bbced23b73a");
+		AdSettings.addTestDevice("f1966ccd-b60d-4b3f-b658-5b48451b399f");
 		FBInterstitial.getInstance().loadFBInterstitial(this);
 
 	}
