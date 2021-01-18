@@ -22,14 +22,9 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.facebook.ads.AdSize;
 import com.scorpion.vectorial.AdUtils.FBInterstitial;
-import com.scorpion.vectorial.FileUtils;
-import com.scorpion.vectorial.Helper;
 import com.scorpion.vectorial.R;
-import com.scorpion.vectorial.renderEngine.RenderEngine;
-import com.scorpion.vectorial.renderEngine.Renderer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,10 +58,8 @@ public class EditorActivity extends AppCompatActivity {
     ArrayList<Drawable> drawables = new ArrayList<>();
     int height;
     int width;
-    int foregroundItem, backgroundColor = Color.BLACK, tintColor = Color.RED;
+    int foregroundItem,backgroundColor = Color.BLACK,tintColor = Color.RED;
     boolean isGradientApplied;
-    LottieAnimationView main_bg_lottie;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,57 +80,29 @@ public class EditorActivity extends AppCompatActivity {
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final Renderer renderer = new Renderer(getApplicationContext(), relativeLayout, main_bg_lottie, main_bg_lottie
-                        , 300);
-
-                renderer.setInterfaceRenderEngine(new RenderEngine.InterfaceRenderEngine() {
-                    @Override
-                    public void onProgressChange(float f) {
-                        Log.d("File123", String.valueOf(f));
-                    }
-
-                    @Override
-                    public void onRendered(File file) {
-                        Log.d("File123",file.getAbsolutePath());
-                    }
-
-                    @Override
-                    public void onRenderFailed(String message) {
-                        Log.d("File123",message);
-                    }
-                });
-
-                new FileUtils(getApplicationContext());
-
-                String FileName = Helper.getCurrentDate() + ".mp4";
-                File file = new File(FileUtils.getDefaultPath(), FileName);
-
-                renderer.init(file, height, width);
-
                 Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 storeImage(getBitmapFromView(relativeLayout));
             }
         });
 
-        foregroundItem = getIntent().getIntExtra("foreground", 0);
-        backgroundColor = getIntent().getIntExtra("background", 0);
-        tintColor = getIntent().getIntExtra("tint", 0);
-        isGradientApplied = getIntent().getBooleanExtra("isGradientApplied", false);
+        foregroundItem = getIntent().getIntExtra("foreground",0);
+        backgroundColor = getIntent().getIntExtra("background",0);
+        tintColor = getIntent().getIntExtra("tint",0);
+        isGradientApplied = getIntent().getBooleanExtra("isGradientApplied",false);
 
         Drawable unwrappedDrawable = AppCompatResources.getDrawable(this, foregroundItem);
         Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
         DrawableCompat.setTint(wrappedDrawable, tintColor);
         foreground.setImageResource(foregroundItem);
         background.setBackgroundColor(backgroundColor);
-        main_bg_lottie = findViewById(R.id.main_bg_lottie);
+
         if (isGradientApplied)
             background.setImageDrawable(MainActivity.gradientDrawable);
 
         buttonClick();
 
         LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
-        loadBannerFirst(EditorActivity.this, adContainer);
+        loadBannerFirst(EditorActivity.this,adContainer);
 
     }
 
@@ -153,8 +118,7 @@ public class EditorActivity extends AppCompatActivity {
         view.draw(canvas);
         return returnedBitmap;
     }
-
-    public void loadBannerFirst(Activity act, LinearLayout laybanner) {
+    public void loadBannerFirst(Activity act, LinearLayout laybanner){
 
         //banner ad
         com.facebook.ads.AdView adViewfb = new com.facebook.ads.AdView(act, getString(R.string.banner_ad_unit_id), AdSize.BANNER_HEIGHT_50);
@@ -164,7 +128,6 @@ public class EditorActivity extends AppCompatActivity {
         // Request an ad
         adViewfb.loadAd();
     }
-
     private void getScreenResolution() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -190,7 +153,6 @@ public class EditorActivity extends AppCompatActivity {
         rotationSeekbar = findViewById(R.id.rotationSeekbar);
         setWallpaper = findViewById(R.id.setWallpaper);
     }
-
 //    @Override
 //    public void onBackPressed() {
 //        FBInterstitial.getInstance().displayFBInterstitial(EditorActivity.this, new FBInterstitial.FbCallback() {
@@ -199,7 +161,6 @@ public class EditorActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-
     public void buttonClick() {
 
         sizeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -225,7 +186,7 @@ public class EditorActivity extends AppCompatActivity {
         rotationSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                foreground.setRotation((float) progress);
+                foreground.setRotation((float)progress);
             }
 
             @Override
@@ -363,10 +324,9 @@ public class EditorActivity extends AppCompatActivity {
         }
     }
 
-    public void setWallPaper() {
-
+    public void setWallPaper(){
         WallpaperManager manager = WallpaperManager.getInstance(getApplicationContext());
-        try {
+        try{
             manager.setBitmap(getBitmapFromView(relativeLayout));
             Toast.makeText(this, "Wallpaper set!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
