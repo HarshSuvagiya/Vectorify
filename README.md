@@ -2,6 +2,9 @@
 
 Vectorify is a minimal app to generate wallpapers from a vast (100+) collection of vector graphics:
 
+## Screenshots
+<img src="sc.png">
+
 ## Social Media
 
 <p align="left">
